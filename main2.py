@@ -132,8 +132,8 @@ def main():
     data = Data(API_KEY, PROJECT_TOKEN)
     country_list = data.get_list_of_countries()
     print("Program Started!!")
-    welcome = "Hello and Welcome to our coronavirus web scraping and voice assistant project. I am you web scraper assistant."
-    # speak(welcome)
+    welcome = "Hello and Welcome to our coronavirus web scraping and voice assistant project. I am you voice assistant."
+    speak(welcome)
     # print("\nPlease speak out your name... ")
     # name = get_audio()
     # time.sleep(2)
@@ -157,7 +157,8 @@ def main():
         re.compile("[\w\s]+ everything [\w\s]"): lambda country: country,
         re.compile("[\w\s]+ information [\w\s]"): lambda country: country,
         re.compile("[\w\s]+ cases [\w\s]"): lambda country: data.get_country_data(country.lower())["total_cases"],
-        re.compile("[\w\s]+ death [\w\s]"): lambda country: data.get_country_data(country.lower())["total_deaths"]
+        re.compile("[\w\s]+ death [\w\s]"): lambda country: data.get_country_data(country.lower())["total_deaths"],
+        re.compile("[\w\s]+ deaths [\w\s]"): lambda country: data.get_country_data(country.lower())["total_deaths"]
     }
 
     UPDATE_PATTERN = "update"
